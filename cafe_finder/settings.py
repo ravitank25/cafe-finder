@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load Environment Variables
 load_dotenv()
-
+ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", ".vercel.app,localhost,127.0.0.1").split(",")
 
 # ✅ આ ઉમેરો — બધા Vercel domains allow થશે
