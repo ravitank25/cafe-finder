@@ -16,9 +16,16 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", ".railway.app,localhost,127.0.0.1").split(
-    ","
-)
+ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS",
+    ".railway.app,.up.railway.app,localhost,127.0.0.1"
+).split(",")
+
+# ✅ CSRF Fix - 400 Bad Request દૂર થશે
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+    "https://*.up.railway.app",
+]
 
 # Application Definition
 INSTALLED_APPS = [
@@ -61,7 +68,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "cafe_finder.wsgi.application"
 
-# ✅ Database - Fixed
+# Database
 DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
 
 if DATABASE_URL and DATABASE_URL != "postgresql://username:password@host:port/database":
@@ -82,9 +89,7 @@ else:
 
 # Password Validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
