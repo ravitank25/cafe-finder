@@ -17,13 +17,11 @@ SECRET_KEY = os.getenv(
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
+    "cafe-finder-l6jjgmf4c-ravitank25s-projects.vercel.app",
     ".vercel.app",
-    ".railway.app",
-    ".up.railway.app",
     "localhost",
     "127.0.0.1",
 ]
-
 CSRF_TRUSTED_ORIGINS = [
     "https://*.vercel.app",
     "https://*.railway.app",
