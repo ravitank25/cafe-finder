@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv(
 )
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
-
+DEBUG = True
 ALLOWED_HOSTS = [
     ".vercel.app",
     ".railway.app",
