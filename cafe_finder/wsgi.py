@@ -14,5 +14,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cafe_finder.settings")
 
 application = get_wsgi_application()
 
-# Vercel માટે જરૂરી છે
 app = application
