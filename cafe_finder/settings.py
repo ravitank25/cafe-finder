@@ -8,13 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load Environment Variables
 load_dotenv()
-ALLOWED_HOSTS = ["*"]
-
-# ✅ આ ઉમેરો — બધા Vercel domains allow થશે
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.vercel.app",
-]
-
 
 # Security
 SECRET_KEY = os.getenv(
@@ -23,12 +16,10 @@ SECRET_KEY = os.getenv(
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv(
-    "ALLOWED_HOSTS", ".railway.app,.up.railway.app,localhost,127.0.0.1"
-).split(",")
+ALLOWED_HOSTS = ["*"]
 
-# ✅ CSRF Fix - 400 Bad Request દૂર થશે
 CSRF_TRUSTED_ORIGINS = [
+    "https://*.vercel.app",
     "https://*.railway.app",
     "https://*.up.railway.app",
 ]
@@ -95,9 +86,7 @@ else:
 
 # Password Validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
